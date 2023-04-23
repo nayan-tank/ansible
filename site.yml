@@ -1,0 +1,16 @@
+---
+- name: webserver setup     
+  hosts: localhost
+  roles:
+    - project1
+
+
+---
+- name: webserver setup
+  hosts: web
+  tasks:
+    - name: group creation
+      group:
+        name: deploy
+        state: present
+

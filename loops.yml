@@ -1,0 +1,12 @@
+--- # Loops
+- name: add list of users
+  user: name={{ item }} state=present
+  with_items:
+    - nayan
+    - pritesh
+    - yagnik
+    - sachin_tendulkar
+    - "MS Dhoni"
+
+
+# if you want to give space btw name then use quote or _

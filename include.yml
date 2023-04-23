@@ -1,0 +1,7 @@
+- hosts: web
+  name: include module
+  tasks:
+    - debug: 
+        msg: calling loops.yml
+
+- include: loops.yml

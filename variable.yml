@@ -1,0 +1,28 @@
+- host: all
+  user: root  
+  connection: ssh
+  gather_facts: true
+  vars:
+    pkgname: nginx
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: install nginx 
+      action: apt name={{ pkgname }} state=present
+    
+    - name: start nginx
+      service: name={{ pkgname }} state=restarted
+
+    - name: install apache2 in ubuntu
+      apt:
+        name: {{ ubuntu_apache }}
+        state: present
+      when: ansible_os_family=='Ubuntu'
+
+    - name: install apache2 in ubuntu
+      yum:
+        name: {{ redhat_apache }}
+        state: present
+      when: ansible_os_family=='RedHat'
+
+

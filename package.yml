@@ -1,0 +1,34 @@
+--- # OS family = ubuntu 
+- hosts: all
+  user: root
+  become: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+    - name: install nginx package
+      apt:
+        name: nginx
+        state: present
+      notify: nginx downloaded
+      debug:
+        msg: "Nginx installed successfully"
+
+    - name: stop nginx
+      service: 
+        name: nginx 
+        state: stopped
+      debug:
+        msg: "Nginx stopped successfully"
+    
+    - name: remove nginx
+      service: 
+        name: nginx 
+        state: absent
+      debug:
+        msg: "Nginx removed successfully"
+    
+  handlers:
+    - name: nginx downloaded
+      action: service name=nginx state=started
+      debug:
+        msg: "Nginx started successfully"

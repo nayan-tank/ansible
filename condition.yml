@@ -1,0 +1,8 @@
+--- # condition
+- name: install nginx on ubuntu
+  command: apt install nginx -y 
+  when: ansible_os_family=='Ubuntu'
+
+- name: install nginx on red hat
+  command: yum install nginx -y 
+  when: ansible_os_family=="RedHat"

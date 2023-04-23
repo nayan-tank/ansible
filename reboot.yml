@@ -1,0 +1,10 @@
+--- # Playbook for reboot the system
+- hosts: web,dev
+  user: ansible
+  become: yes # to get root aceess
+  connection: ssh
+  gather_facts: yes
+  tasks:
+    - name: reboot the system
+      reboot: 
+  

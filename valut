@@ -1,0 +1,20 @@
+
+# Ansible allow keeping sensitive data such as password or key in encrypted files, rather than a plain text in your ansible playbooks.
+
+### LIST OF ANSIBLE-VAULT COMMANDS ###
+
+# create a new encrypted playbook 
+ansible-vault create vault.yml
+
+# edit the encrypted playbook 
+ansible-vault edit vault.yml
+
+# to change the password of encrypted playbook
+ansible-vault rekey vault.yml
+
+# to encrypted existing playbook 
+ansible-vault encrypt vault.yml
+
+# to decrypt existing playbook 
+ansible-vault decrypt vault.yml
+
