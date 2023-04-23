@@ -2,11 +2,22 @@
   user: root  
   connection: ssh
   gather_facts: true
+  
   vars:
     pkgname: nginx
+  
   vars_files:
     - vars.yml
+  
+  vars_prompt:
+    - name: "Version" # variable name
+      prompt: "Which version Do you want to install?"
+      private: false # text visible  
+
   tasks:
+    - name: include variables # more priority 
+      include_vars: vars.yml
+    
     - name: install nginx 
       action: apt name={{ pkgname }} state=present
     
@@ -25,4 +36,11 @@
         state: present
       when: ansible_os_family=='RedHat'
 
+    - name: Ansible register with_items example
+      shell: "find *.txt"
+      args:
+        chdir: "/tmp"
+      register: with_output
+    - debug:
+        var: with_output.stdout
 

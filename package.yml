@@ -12,6 +12,11 @@
       notify: nginx downloaded
       debug:
         msg: "Nginx installed successfully"
+      
+    - name: copy file to /var/www/html
+      copy: 
+         src: index.html
+         dest: /var/www/html
 
     - name: stop nginx
       service: 

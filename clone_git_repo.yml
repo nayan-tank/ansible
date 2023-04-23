@@ -1,0 +1,11 @@
+---
+
+- name: install git and wget
+  apt: 
+    name: git,wget
+    state: present
+
+- name: clone git repo
+  git: 
+    repo: https://github.com/nayan-tank/carweb.git
+    dest: /home/ubuntu
