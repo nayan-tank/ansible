@@ -1,0 +1,27 @@
+---
+- hosts: all
+  name: gathering facts
+  tasks:
+    - debug:
+        var: ansible_facts  # this var contains all facts node
+
+---
+- hosts: localhost
+  # gather_facts: yes
+  name: gathering facts
+  tasks:
+    - debug:
+        var: ansible_facts  # this var contains all facts node
+
+...
+# ansible -i inventory -m setup web1 | grep distri
+
+---
+                  
+- hosts: all
+  tasks: 
+    - name: read file
+      file: 
+        path: /etc/redhat-release
+        state: cat
+...

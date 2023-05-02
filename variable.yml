@@ -34,6 +34,7 @@
       yum:
         name: {{ redhat_apache }}
         state: present
+      tags: "install apache2"
       when: ansible_os_family=='RedHat'
 
     - name: Ansible register with_items example

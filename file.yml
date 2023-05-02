@@ -1,0 +1,9 @@
+---
+- name: create file
+  hosts: web1
+  tasks:
+    - name: create file
+      file:
+        path: /root/myfile.txt
+        state: touch
+      
