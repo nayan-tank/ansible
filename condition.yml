@@ -1,8 +1,31 @@
 --- # condition
-- name: install nginx on ubuntu
-  command: apt install nginx -y 
-  when: ansible_os_family=='Ubuntu'
+- hosts: localhost
+  gather_facts: false
+  vars:
+    test: 1
+  tasks:
+    - name: install nginx on ubuntu
+      command: apt install nginx -y 
+      when: ansible_os_family=='Ubuntu'
 
-- name: install nginx on red hat
-  command: yum install nginx -y 
-  when: ansible_os_family=="RedHat"
+    - name: install nginx on red hat
+      command: yum install nginx -y 
+      when: ansible_os_family=="RedHat"
+      # Multiple condition example
+      # when: (ansible_os_family=="CentOs" and ansible_distribution_major_version=="6") or (test1 == 1 and test2 != 2)
+
+    - debug:
+        msg: One
+      when: test == 1
+      
+    - debug:
+        msg: Two
+      when: test != 2
+      
+    - debug:
+        msg: is defined
+      when: test is defined
+    
+    - debug:
+        msg: is undefined
+      when: test2 is undefined

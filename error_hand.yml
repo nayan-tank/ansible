@@ -1,0 +1,25 @@
+- hosts: localhost
+  tasks:
+    - name: Error Handling
+      command: /user/bin false
+      register: cmd_output
+      failed_when: "'FAILED' in cmd_output.stderr" 
+
+    - name: Ignore Error
+      command: abc
+      ignore_errors: true
+
+    - name: Error Handling Block
+      block:
+        - debug: 
+            msg: I execute normally 
+        - name: I force a failure
+          command: abc  
+        - debug: 
+            msg: I never execute
+      rescue:
+        - debug: 
+            msg: I caught an Error
+      always:
+        - debug:
+            msg: I always execute  

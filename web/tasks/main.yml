@@ -1,0 +1,12 @@
+---
+# tasks file for web
+# - name: install nginx
+#   apt:
+#     name: nginx
+#     state: latest
+#   notify: nginx installed
+
+
+- name: start nginx 
+  command: service nginx start
+  notify: nginx started

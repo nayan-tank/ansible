@@ -1,0 +1,10 @@
+- hosts: 127.0.0.1
+  vars:
+    loc: from-playbook
+    path: playbook
+  tasks:
+    - name: variable from env file
+      debug:
+        msg: "I'm from {{loc}} file"
+    - debug:
+        msg: "Path {{path}}"

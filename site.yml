@@ -1,16 +1,17 @@
 ---
-- name: webserver setup     
+- name: web setup     
   hosts: localhost
+  gather_facts: false
   roles:
-    - project1
+    - web
 
 
----
-- name: webserver setup
-  hosts: web
-  tasks:
-    - name: group creation
-      group:
-        name: deploy
-        state: present
+# ---
+# - name: webserver setup
+#   hosts: web
+#   tasks:
+#     - name: group creation
+#       group:
+#         name: deploy
+#         state: present
 

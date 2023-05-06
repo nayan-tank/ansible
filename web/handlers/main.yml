@@ -1,0 +1,10 @@
+---
+# # handlers file for web
+# - name: nginx installed
+#   service:
+#     name: nginx
+#     state: started
+
+- name: nginx started
+  debug: 
+    msg: nginx running...

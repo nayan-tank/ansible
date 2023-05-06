@@ -1,0 +1,12 @@
+- hosts: localhost
+  gather_facts: false
+  tasks: 
+    - debug: 
+        msg: Tag example 1
+      tags: tag1
+    - debug: 
+        msg: Tag example 2
+      tags: tag2
+
+# ansible-playbook loop2.yml --tags "tag1,tag2"     
+# ansible-playbook loop2.yml --skip-tags "tag1,tag2"     
