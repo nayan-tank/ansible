@@ -1,7 +1,5 @@
-- hosts: localhost
+- hosts: "{{ system }}"
+  become: true
+  gather_facts: no
   tasks:
-    - name: nginx
-      apt: 
-        name: nginx
-        state: present
-        
+    - ping:
