@@ -32,8 +32,8 @@
       debug:
         msg: "Nginx removed successfully"
     
-  handlers:
-    - name: nginx downloaded
-      action: service name=nginx state=started
-      debug:
-        msg: "Nginx started successfully"
+  # handlers:
+  #   - name: nginx downloaded
+  #     action: service name=nginx state=started
+  #     debug:
+  #       msg: "Nginx started successfully"
