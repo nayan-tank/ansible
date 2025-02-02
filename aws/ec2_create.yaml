@@ -1,0 +1,18 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: create new ec2 instance  
+      amazon.aws.ec2_instance:
+        name: "public-compute-instance"
+        key_name: "prod-ssh-key"
+        vpc_subnet_id: subnet-5ca1ab1e
+        instance_type: c5.large
+        security_group: default
+        aws_access_key: "{{ec2_access_key}}" 
+        aws_secret_key: "{{ec2_secret_key}}"
+        region: us-east-1
+        image_id: ami-123456
+        network:
+          assign_public_ip: true
+        tags:
+          Environment: Testing

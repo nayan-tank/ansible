@@ -1,0 +1,16 @@
+---
+# handlers file for test
+tasks:
+  - name: install httpd
+    apt:
+      name: httpd
+      state: present
+    notify:
+      - Start httpd
+
+handlers:
+  - name: Start httpd
+    ansible.builtin.service:
+      name: httpd
+      state: started
+        
